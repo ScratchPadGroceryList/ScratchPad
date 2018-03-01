@@ -1,0 +1,28 @@
+{
+  "name": "scratchpadgrocerylist",
+  "version": "0.1.0",
+  "description": "A Phonegap/Node.js app for more easily communicating grocery lists.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turnipjs/ScratchPadGroceryList.git"
+  },
+  "keywords": [
+    "Grocery",
+    "List",
+    "App",
+    "Phonegap"
+  ],
+  "author": "Charles Moonen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/turnipjs/ScratchPadGroceryList/issues"
+  },
+  "homepage": "https://github.com/turnipjs/ScratchPadGroceryList#readme",
+  "dependencies": {
+    "socket.io": "^2.0.4"
+  }
+}

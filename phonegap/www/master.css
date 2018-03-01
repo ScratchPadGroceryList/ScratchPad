@@ -1,0 +1,40 @@
+.content {
+  
+}
+
+.header {
+  
+}
+
+.list {
+  
+}
+
+.groceryList {
+  
+}
+
+.settingsList {
+  
+}
+
+
+.bottomNav {
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar {
+  margin: 0;
+  list-style-type: none;
+}
+
+.navitem {
+  display: inline;
+}
+
+.navIcon {
+  display: block;
+}
