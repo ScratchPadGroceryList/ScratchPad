@@ -1,17 +1,93 @@
+:root {
+  --primary: #5ba6ff
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', serif;
+  display: grid;
+  grid-template-columns: 100%;
+  height: 100vh;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "header "
+                       "content"
+                       "footer ";
+  -webkit-overflow-scrolling: touch;
+}
+
 .content {
-  
+  margin-right: 8px;
+  margin-left: 8px;
+  overflow-y: scroll;
 }
 
 .header {
+  grid-area: header;
+  background-color: var(--primary);
+  text-align: center;
+}
+
+.header > h1 {
+  margin: 0;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.displayFrame {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+ul.list {
+  padding-left: 0;
+}
+
+ul.gList {
   
 }
 
-.list {
-  
+li.gListItem {
+  list-style: none;
+  border: solid black 1px;
+  padding: 1em .5em;
+  display: grid;
+  grid-template-columns: auto 80px;
+  grid-template-rows: auto auto;
+  grid-template-areas: "title buttons"
+                       "notes quant  ";
 }
 
-.groceryList {
-  
+li.gListItem > h2 {
+  margin: 0;
+  padding: 0;
+  grid-area: title;
+}
+
+li.gListItem > p.itemNotes {
+  margin: 0;
+  padding: 0;
+  grid-area: notes;
+}
+
+li.gListItem > p.quant {
+  margin: 0;
+  padding: 0;
+  grid-area: quant;
+  text-align: right;
+  margin-top: auto;
+  padding-right: .5em;
+}
+
+.gListControl {
+  text-align: right;
+  grid-area: buttons;
+}
+
+.gListControl > img {
+  height: 30px;
+  margin: 5px;
 }
 
 .settingsList {
@@ -20,21 +96,31 @@
 
 
 .bottomNav {
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  background-color: var(--primary);
+  grid-area: footer;
+  font-size: 0; /* to fix gap issues */
 }
 
 .navbar {
-  margin: 0;
-  list-style-type: none;
+  /* background-color: blue; */
+  list-style: none;
+  padding: 0;
+  width: 240px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .navitem {
-  display: inline;
+  /* background-color: cyan; */
+  text-align: center;
+  width: 80px;
+  display: inline-block;
+  font-size: 16px; /* to fix gap issue */
+  margin-top: .5em;
+  margin-bottom: .5em;
 }
 
 .navIcon {
-  display: block;
+  /* background-color: magenta; */
+  width: 40px;
 }

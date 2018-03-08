@@ -1,0 +1,14 @@
+{
+  "name": "com.charlesmoonen.sratchpadgrocerylist",
+  "version": "1.0.0",
+  "displayName": "ScratchPadGroceryList",
+  "cordova": {
+    "platforms": [
+      "ios"
+    ],
+    "plugins": {}
+  },
+  "dependencies": {
+    "cordova-ios": "~4.5.4"
+  }
+}
