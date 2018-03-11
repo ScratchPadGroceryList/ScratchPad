@@ -57,5 +57,10 @@ typings/
 # dotenv environment variables file
 .env
 
+# Project Specifics
+
 # Phonegap
 /phonegap/platforms/*
+
+# localForage
+/phonegap/www/localForage-1.6.0
