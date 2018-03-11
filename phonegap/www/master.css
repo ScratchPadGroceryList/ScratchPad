@@ -44,11 +44,7 @@ ul.list {
   padding-left: 0;
 }
 
-ul.gList {
-  
-}
-
-li.gListItem {
+ul.list > li {
   list-style: none;
   border: solid black 1px;
   padding: 1em .5em;
@@ -59,19 +55,19 @@ li.gListItem {
                        "notes quant  ";
 }
 
-li.gListItem > h2 {
+ul.list > li > h2 {
   margin: 0;
   padding: 0;
   grid-area: title;
 }
 
-li.gListItem > p.itemNotes {
+ul.list > li > p.itemNotes {
   margin: 0;
   padding: 0;
   grid-area: notes;
 }
 
-li.gListItem > p.quant {
+ul.list > li > p.quant {
   margin: 0;
   padding: 0;
   grid-area: quant;
@@ -80,20 +76,15 @@ li.gListItem > p.quant {
   padding-right: .5em;
 }
 
-.gListControl {
+.listControl {
   text-align: right;
   grid-area: buttons;
 }
 
-.gListControl > img {
+.listControl > img {
   height: 30px;
   margin: 5px;
 }
-
-.settingsList {
-  
-}
-
 
 .bottomNav {
   background-color: var(--primary);
@@ -105,7 +96,7 @@ li.gListItem > p.quant {
   /* background-color: blue; */
   list-style: none;
   padding: 0;
-  width: 240px;
+  width: 320px;
   margin-left: auto;
   margin-right: auto;
 }

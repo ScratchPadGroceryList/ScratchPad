@@ -70,12 +70,16 @@ const SAMPLE_LIST = [
 
 
 // const
-const MENU_ITEMS = ["gList", "cart", "settings"];
+const MENU_ITEMS = ["pList", "cart", "settings", "gList"];
 
 // socket
 
 
 // bottom nav listeners
+$(".navitem.pList").on("touchend", function() {
+  changeView("pList");
+});
+
 $(".navitem.gList").on("touchend", function() {
   changeView("gList");
 });
@@ -97,30 +101,40 @@ $(".navitem.settings").on("touchend", function() {
 // display
 function changeView(view) {
   switch (view) {
+    case "pList":
+      $(".content").load("pList.html");
+      for (var index in MENU_ITEMS) {
+        var item = MENU_ITEMS[index];
+        $(".navIcon." + item).attr("src", ("icon/" + item + ((item == view) ? "-active" : "") + ".svg"));
+      }      // need this complicated thing to make sure all other buttons are set to inactive
+      break;
+      
     case "gList":
       $(".content").load("gList.html", function() {
         refreshList(SAMPLE_LIST, "gList");
       });
       for (var index in MENU_ITEMS) {
-        var item = MENU_ITEMS[index]; console.log(item); console.log(item == view);
+        var item = MENU_ITEMS[index];
         $(".navIcon." + item).attr("src", ("icon/" + item + ((item == view) ? "-active" : "") + ".svg"));
-      }
+      }      // need this complicated thing to make sure all other buttons are set to inactive
       break;
       
     case "cart":
-      $(".content").load("cart.html");
+      $(".content").load("cart.html", function() {
+        refreshList(SAMPLE_LIST, "cList")
+      });
       for (var index in MENU_ITEMS) {
-        var item = MENU_ITEMS[index]; console.log(item); console.log(item == view);
+        var item = MENU_ITEMS[index];
         $(".navIcon." + item).attr("src", ("icon/" + item + ((item == view) ? "-active" : "") + ".svg"));
-      }
+      }      // need this complicated thing to make sure all other buttons are set to inactive
       break;
       
     case "settings":
       $(".content").load("settings.html");
       for (var index in MENU_ITEMS) {
-        var item = MENU_ITEMS[index]; console.log(item); console.log(item == view);
+        var item = MENU_ITEMS[index];
         $(".navIcon." + item).attr("src", ("icon/" + item + ((item == view) ? "-active" : "") + ".svg"));
-      }
+      }      // need this complicated thing to make sure all other buttons are set to inactive
       break;
       
     default:
@@ -129,22 +143,20 @@ function changeView(view) {
 }
 
 function itemToHtml(item, listType) {
-  if (listType == "gList") {
-    var html = `<li class="gListItem"><h2 class="itemTitle">${item.name?item.name:""}</h2><p class="itemNotes">${item.notes?item.notes:""}</p><p class="quant">${item.quant?item.quant:""}</p><div class="gListControl"><img src="icon/trash.svg" alt="delete"><img src="icon/addCart.svg" alt="add to cart"></div></li>`;
-    // console.log(html);
-    return html;
+  if (listType == "pList") {
+    return `<li class="gListItem"><h2 class="itemTitle">${item.name?item.name:""}</h2><p class="itemNotes">${item.notes?item.notes:""}</p><p class="quant">${item.quant?item.quant:""}</p><div class="listControl pListControl"><img src="icon/trash.svg" alt="delete"><img src="icon/addCart.svg" alt="add to cart"></div></li>`;
+  } else if (listType == "gList") {
+    return `<li class="gListItem"><h2 class="itemTitle">${item.name?item.name:""}</h2><p class="itemNotes">${item.notes?item.notes:""}</p><p class="quant">${item.quant?item.quant:""}</p><div class="listControl gListControl"><img src="icon/trash.svg" alt="delete"><img src="icon/addCart.svg" alt="add to cart"></div></li>`;
   } else if (listType == "cList") {
-    
+    return `<li class="gListItem"><h2 class="itemTitle">${item.name?item.name:""}</h2><p class="itemNotes">${item.notes?item.notes:""}</p><p class="quant">${item.quant?item.quant:""}</p><div class="listControl cListControl"><img src="icon/trash.svg" alt="delete"><img src="icon/removeCart.svg" alt="add to cart"></div></li>`;
   }
 }
 
-function refreshList(list) {
-  console.log("refreshing list");
-  var gList = $("ul.gList")[0];
-  console.log(gList);
-  $(gList).empty();
+function refreshList(list, listType) {
+  var listElement = $("ul." + listType)[0];
+  $(listElement).empty();
   for (var item in list) {
-    $(gList).append(itemToHtml(list[item], "gList"));
+    $(listElement).append(itemToHtml(list[item], listType));
   }
 }
 
