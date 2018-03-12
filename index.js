@@ -38,7 +38,7 @@ function makeKey(length = 10, type = "alphanum") {
 
 //actually do things
 app.get('/', function(req, res){
-  res.send('');
+  res.send('no text is the issue?');
 });
 
 http.listen(80, function(){
