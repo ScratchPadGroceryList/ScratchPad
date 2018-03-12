@@ -75,6 +75,27 @@ const MENU_ITEMS = ["pList", "cart", "settings", "gList"];
 // socket
 
 
+// non-application-specific helper functions.
+function makeKey(length = 10, type = "alphanum") {
+  let types = {
+    alpha: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+    alphal: "abcdefghijklmnopqrstuvwxyz",
+    alphau: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    alphanum: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+    num: "0123456789" 
+  }
+  let key = "";
+  for (; length > 0; length--) {
+    key += types[type][Math.floor(Math.random() * types[type].length)]
+  }
+  return key;
+}
+
+// init
+if (true) {
+  
+}
+
 // bottom nav listeners
 $(".navitem.pList").on("touchend", function() {
   changeView("pList");
