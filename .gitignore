@@ -64,3 +64,6 @@ typings/
 
 # localForage
 /phonegap/www/localForage-1.6.0
+
+#webstorm files
+.idea

@@ -4,6 +4,7 @@
   "description": "A Phonegap/Node.js app for more easily communicating grocery lists.",
   "main": "index.js",
   "scripts": {
+    "start":  "node index.js",
     "test": "node index.js -d"
   },
   "repository": {
