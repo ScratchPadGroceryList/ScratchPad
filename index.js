@@ -9,9 +9,9 @@ const client = new Client({
 });
 
 // require
-const io = require('socket.io')();
-var app = require('express')();
-var http = require('http').Server(app);
+let app = require('express')();
+let http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 // non-application-specific helper functions.
 function makeKey(length = 10, type = "alphanum") {
@@ -27,7 +27,7 @@ function makeKey(length = 10, type = "alphanum") {
   }
   let key = "";
   for (i = 0; i<length; i++) {
-    if(i==0 && type=="alphanum"){
+    if(i===0 && type==="alphanum"){
       key += types[type][Math.floor((Math.random() * types[type].length) - 10)]
     }else{
       key += types[type][Math.floor(Math.random() * types[type].length)]
