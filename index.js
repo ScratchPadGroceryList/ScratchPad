@@ -10,6 +10,8 @@ const client = new Client({
 
 // require
 const io = require('socket.io')();
+var app = require('express')();
+var http = require('http').Server(app);
 
 // non-application-specific helper functions.
 function makeKey(length = 10, type = "alphanum") {
@@ -33,6 +35,15 @@ function makeKey(length = 10, type = "alphanum") {
   }
   return key;
 }
+
+//actually do things
+app.get('/', function(req, res){
+  res.send('');
+});
+
+http.listen(80, function(){
+  console.log('listening on *:80');
+});
 
 // socket junk
 io.on('connection', function(socket) {
