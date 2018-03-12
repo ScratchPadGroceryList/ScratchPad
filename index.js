@@ -36,16 +36,20 @@ function makeKey(length = 10, type = "alphanum") {
 
 // socket junk
 io.on('connection', function(socket) {
+  query();
 });
 
 //heroku pg junk
 client.connect();
 
-/*client.query('SELECT username FROM users', (err, res) => {
+function query(q = "SELECT username FROM users") {
+  client.query(q, (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
+    console.log(res.rows);
     console.log(JSON.stringify(row));
   }
   client.end();
   socket.emit('ping', "it's working");
-});*/
+  });
+}
