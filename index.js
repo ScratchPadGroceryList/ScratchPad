@@ -62,7 +62,7 @@ function query(q = "SELECT username FROM users") {
     output += (JSON.stringify(row)+"\n");
   }
   client.end();
-  //socket.emit('ping', "it's working");
+  socket.emit('ping', "it's working");
   return output;
   });
 }
