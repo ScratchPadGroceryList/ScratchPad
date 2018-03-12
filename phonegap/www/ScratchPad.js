@@ -84,16 +84,21 @@ function makeKey(length = 10, type = "alphanum") {
     alphanum: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
     num: "0123456789" 
   }
+  if (length < 1) {
+    return "";
+  }
   let key = "";
   for (; length > 0; length--) {
-    key += types[type][Math.floor(Math.random() * types[type].length)]
+    key += types[type][Math.floor(Math.random() * types[type].length)];
   }
   return key;
 }
 
 // init
-if (true) {
-  
+function init() {
+  if (true) {
+    
+  }
 }
 
 // bottom nav listeners
@@ -183,3 +188,4 @@ function refreshList(list, listType) {
 
 
 changeView("gList");
+init();
