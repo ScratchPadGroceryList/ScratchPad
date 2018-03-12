@@ -41,8 +41,8 @@ app.get('/', function(req, res){
   res.send('no text is the issue?');
 });
 
-http.listen(80, function(){
-  console.log('listening on *:80');
+http.listen(443, function(){
+  console.log('listening on *:443');
 });
 
 // socket junk
