@@ -1,5 +1,5 @@
 // const
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
 const { Client } = require('pg');
 
@@ -21,7 +21,7 @@ function makeKey(length = 10, type = "alphanum") {
     alphau: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     alphanum: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
     num: "0123456789"
-  }
+  };
   if (length < 1) {
     return "";
   }
@@ -38,7 +38,7 @@ function makeKey(length = 10, type = "alphanum") {
 
 //actually do things
 app.get('/', function(req, res){
-  res.send('no text is the issue?');
+  res.send(query());
 });
 
 http.listen(PORT, function(){
@@ -47,20 +47,22 @@ http.listen(PORT, function(){
 
 // socket junk
 io.on('connection', function(socket) {
-  query();
+  //query();
 });
 
 //heroku pg junk
 client.connect();
 
 function query(q = "SELECT username FROM users") {
+  let output = "";
   client.query(q, (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
-    console.log(res.rows);
-    console.log(JSON.stringify(row));
+    output +=(res.rows+"\n");
+    output += (JSON.stringify(row)+"\n");
   }
   client.end();
   socket.emit('ping', "it's working");
+  return output;
   });
 }
