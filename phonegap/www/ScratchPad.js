@@ -82,14 +82,18 @@ function makeKey(length = 10, type = "alphanum") {
     alphal: "abcdefghijklmnopqrstuvwxyz",
     alphau: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     alphanum: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-    num: "0123456789" 
+    num: "0123456789"
   }
   if (length < 1) {
     return "";
   }
   let key = "";
-  for (; length > 0; length--) {
-    key += types[type][Math.floor(Math.random() * types[type].length)];
+  for (i = 0; i<length; i++) {
+    if(i==0 && type="alphanum"){
+      key += types[type][Math.floor((Math.random() * types[type].length) - 10)]
+    }else{
+      key += types[type][Math.floor(Math.random() * types[type].length)]
+    }
   }
   return key;
 }
@@ -97,7 +101,7 @@ function makeKey(length = 10, type = "alphanum") {
 // init
 function init() {
   if (true) {
-    
+
   }
 }
 
@@ -134,7 +138,7 @@ function changeView(view) {
         $(".navIcon." + item).attr("src", ("icon/" + item + ((item == view) ? "-active" : "") + ".svg"));
       }      // need this complicated thing to make sure all other buttons are set to inactive
       break;
-      
+
     case "gList":
       $(".content").load("gList.html", function() {
         refreshList(SAMPLE_LIST, "gList");
@@ -144,7 +148,7 @@ function changeView(view) {
         $(".navIcon." + item).attr("src", ("icon/" + item + ((item == view) ? "-active" : "") + ".svg"));
       }      // need this complicated thing to make sure all other buttons are set to inactive
       break;
-      
+
     case "cart":
       $(".content").load("cart.html", function() {
         refreshList(SAMPLE_LIST, "cList")
@@ -154,7 +158,7 @@ function changeView(view) {
         $(".navIcon." + item).attr("src", ("icon/" + item + ((item == view) ? "-active" : "") + ".svg"));
       }      // need this complicated thing to make sure all other buttons are set to inactive
       break;
-      
+
     case "settings":
       $(".content").load("settings.html");
       for (var index in MENU_ITEMS) {
@@ -162,7 +166,7 @@ function changeView(view) {
         $(".navIcon." + item).attr("src", ("icon/" + item + ((item == view) ? "-active" : "") + ".svg"));
       }      // need this complicated thing to make sure all other buttons are set to inactive
       break;
-      
+
     default:
       throw Error("Invalid View Option");
   }

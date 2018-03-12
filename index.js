@@ -18,14 +18,18 @@ function makeKey(length = 10, type = "alphanum") {
     alphal: "abcdefghijklmnopqrstuvwxyz",
     alphau: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     alphanum: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-    num: "0123456789" 
+    num: "0123456789"
   }
   if (length < 1) {
     return "";
   }
   let key = "";
-  for (; length > 0; length--) {
-    key += types[type][Math.floor(Math.random() * types[type].length)]
+  for (i = 0; i<length; i++) {
+    if(i==0 && type="alphanum"){
+      key += types[type][Math.floor((Math.random() * types[type].length) - 10)]
+    }else{
+      key += types[type][Math.floor(Math.random() * types[type].length)]
+    }
   }
   return key;
 }
@@ -37,11 +41,11 @@ io.on('connection', function(socket) {
 //heroku pg junk
 client.connect();
 
-client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+/*client.query('SELECT username FROM users', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
     console.log(JSON.stringify(row));
   }
   client.end();
   socket.emit('ping', "it's working");
-});
+});*/
