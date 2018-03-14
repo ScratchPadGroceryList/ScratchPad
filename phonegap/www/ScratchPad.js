@@ -2,69 +2,55 @@ if ($(".gList")) {
   console.log("jquery working");
 }
 // testing stuff
-const SAMPLE_LIST = [
-  {
-    name: "Apples",
-    notes: "and grapes",
-    quant: "10"
-  },{
-    name: "Grapes",
-    notes: "and apples",
-    quant: "10"
-  },{
-    name: "Yogurt",
-    notes: "I need a pretty long notes text so I will just write a ton of nonsense here just to fill in the space that I need to properly asses the compatability of the current layout of the list items",
-    quant: "20"
-  },{
-    name: "Milk",
-    notes: "3x 1%, 1x skim",
-    quant: null
-  },{
-    name: "Oranges",
-    notes: null,
-    quant: null
-  },{
-    name: "Tostitos",
-    notes: null,
-    quant: "4"
-  },{
-    name: "Apples",
-    notes: "and grapes",
-    quant: "10"
-  },{
-    name: "Apples",
-    notes: "and grapes",
-    quant: "10"
-  },{
-    name: "Apples",
-    notes: "and grapes",
-    quant: "10"
-  },{
-    name: "Apples",
-    notes: "and grapes",
-    quant: "10"
-  },{
-    name: "Apples",
-    notes: "and grapes",
-    quant: "10"
-  },{
-    name: "Apples",
-    notes: "and grapes",
-    quant: "10"
-  },{
-    name: "Apples",
-    notes: "and grapes",
-    quant: "10"
-  },{
-    name: "Apples",
-    notes: "and grapes",
-    quant: "10"
-  },{
-    name: "Apples",
-    notes: "and grapes",
-    quant: "10"
+const SAMPLE_STORAGE = {
+  "user": {
+    "name": "John Smith",
+    "username": "jsmith244",
+    "pList": {
+      "7374rjaskK": {
+        "name": "Apples",
+        "notes": "and grapes",
+        "quant": "10"
+      },
+      "2Hyd3y73Ht": {
+        "name": "Grapes",
+        "notes": "and apples",
+        "quant": "10"
+      }
+    }
   },
-];
+  
+  "settings": {
+    "sampleBoolSetting": false,
+    "sampleNumSetting": 100,
+    "sampleStringSetting": "string"
+  },
+  
+  "family": {
+    "gList": {
+      "a7H77snw3k": {
+        "name": "Yogurt",
+        "notes": "I need a pretty long notes text so I will just write a ton of nonsense here just to fill in the space that I need to properly asses the compatability of the current layout of the list items",
+        "quant": "20"
+      },
+      "8hh2dKKtw4": {
+        "name": "Milk",
+        "notes": "3x 1%, 1x skim",
+        "quant": null
+      },
+      "188FhUqm84": {
+        "name": "Oranges",
+        "notes": null,
+        "quant": null
+      },
+      "Aii38Uy7Et": {
+        "name": "Tostitos",
+        "notes": null,
+        "quant": "4"
+      }
+    }
+  }
+}
 
 // param
 
