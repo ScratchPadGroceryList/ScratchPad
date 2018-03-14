@@ -43,7 +43,7 @@ app.get('/', function(req, res){
 });
 
 http.listen(PORT, function(){
-  console.log('listening on *:443');
+  console.log('listening on' + PORT);
 });
 
 // socket junk
