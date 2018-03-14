@@ -1,5 +1,5 @@
 // const
-const PORT = 8080;
+const PORT = process.env.PORT || 5000;
 
 const { Client } = require('pg');
 
@@ -7,6 +7,7 @@ const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
 });
+client.connect();
 
 // require
 const io = require('socket.io')();
@@ -38,11 +39,11 @@ function makeKey(length = 10, type = "alphanum") {
 
 //actually do things
 app.get('/', function(req, res){
-  res.send('no text is the issue?');
+  res.send('');
 });
 
-http.listen(443, function(){
-  console.log('listening on *:443');
+http.listen(PORT, function(){
+  console.log('listening on' + PORT);
 });
 
 // socket junk
@@ -51,16 +52,22 @@ io.on('connection', function(socket) {
 });
 
 //heroku pg junk
-client.connect();
 
-function query(q = "SELECT username FROM users") {
+function query(q) {
   client.query(q, (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(res.rows);
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-  socket.emit('ping', "it's working");
+    if (err){
+      console.log(err);
+      return;
+    }
+    let output = {};
+    for (let row of res.rows) {
+      console.log(res.rows);
+      console.log(JSON.stringify(row);
+      output += (row);
+
+    }
+    console.log(output);
+    //return output;
+    io.emit('query return', output);
   });
 }
