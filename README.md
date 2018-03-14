@@ -2,14 +2,12 @@
 A Phonegap/Node.js app for more easily communicating grocery lists.
 
 
+## Important info
+### Database model
+#### Table: users
+user_name text, // Human Name
 
-### Database model:
-
-#### table users:
-
-user_name text,
-
-username  text,
+username  text, // uniqueUsername
 
 private_list json,
 
@@ -19,12 +17,11 @@ cart json,
 
 settings json
 
-#### table families:
+#### Table: families
+family_key text, // unique idendifier key 7 digit
 
-family_key text,
-
-family_name text,
+family_name text, // any string
 
 public_list json,
 
-users text[],
+members text[], // list of member usernames in the family
