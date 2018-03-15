@@ -45,24 +45,26 @@ io.on('connection', (socket) => {
 
 //heroku pg junk
 
-function query(q) {
-  q = q.split(" | ")
-  client.query(q[0], (err, res) => {
+function query(q, selector) {
+  client.query(q, (err, res) => {
     if (err){
       console.log(err);
       io.emit('query return', {
-        "out": [{
+        "out": {
           "error": err
-        }],
+        },
         "selector": "error"
       });
     }
+    output = [];
+    for(let i =0; i<res.rows.length; i++){
+      if(res[rows][i].hasOwnProperty(selector)){
+        output.push(res[rows][i][selector]);
+      }
+    }
     console.log(res.rows);
     //return output;
-    io.emit('query return', {
-      "out": res.rows,
-      "selector": (q[1] != null ? q[1] : null)
-    });
+    io.emit('query return', output);
   });
 }
 
