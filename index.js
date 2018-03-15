@@ -15,7 +15,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 
 // non-application-specific helper functions.
-function makeKey(length = 10, type = "alphanum") {
+function makeKey(length = 10, type = "alphanum", prefix = null) {
   let types = {
     alpha: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
     alphal: "abcdefghijklmnopqrstuvwxyz",
@@ -23,16 +23,16 @@ function makeKey(length = 10, type = "alphanum") {
     alphanum: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
     num: "0123456789"
   }
-  if (length < 1) {
-    return "";
-  }
   let key = "";
+  if (prefix) {
+    key += prefix;
+    key += "-";
+  }
+  if (length < 1) {
+    return key;
+  }
   for (i = 0; i<length; i++) {
-    if(i==0 && type=="alphanum"){
-      key += types[type][Math.floor((Math.random() * types[type].length) - 10)]
-    }else{
-      key += types[type][Math.floor(Math.random() * types[type].length)]
-    }
+    key += types[type][Math.floor(Math.random() * types[type].length)];
   }
   return key;
 }

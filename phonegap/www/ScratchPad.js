@@ -62,7 +62,7 @@ const MENU_ITEMS = ["pList", "cart", "settings", "gList"];
 
 
 // non-application-specific helper functions.
-function makeKey(length = 10, type = "alphanum") {
+function makeKey(length = 10, type = "alphanum", prefix = null) {
   let types = {
     alpha: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
     alphal: "abcdefghijklmnopqrstuvwxyz",
@@ -70,16 +70,16 @@ function makeKey(length = 10, type = "alphanum") {
     alphanum: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
     num: "0123456789"
   }
-  if (length < 1) {
-    return "";
-  }
   let key = "";
+  if (prefix) {
+    key += prefix;
+    key += "-";
+  }
+  if (length < 1) {
+    return key;
+  }
   for (i = 0; i<length; i++) {
-    if(i==0 && type=="alphanum"){
-      key += types[type][Math.floor((Math.random() * types[type].length) - 10)]
-    }else{
-      key += types[type][Math.floor(Math.random() * types[type].length)]
-    }
+    key += types[type][Math.floor(Math.random() * types[type].length)];
   }
   return key;
 }
@@ -92,19 +92,19 @@ function init() {
 }
 
 // bottom nav listeners
-$(".navitem.pList").on("touchend", function() {
+$(".navitem.pList").on("touchend", () => {
   changeView("pList");
 });
 
-$(".navitem.gList").on("touchend", function() {
+$(".navitem.gList").on("touchend", () => {
   changeView("gList");
 });
 
-$(".navitem.cart").on("touchend", function() {
+$(".navitem.cart").on("touchend", () => {
   changeView("cart");
 });
 
-$(".navitem.settings").on("touchend", function() {
+$(".navitem.settings").on("touchend", () => {
   changeView("settings");
 });
 // gListControl listeners
