@@ -107,6 +107,9 @@ Stands for settings list.
 Note: quant is a string.
 
 ### Socket.io Requests and Pushes
+#### About socket communications
+- All communications should be in the form of an object.
+- In multi-step communications (e.g. client sends init, server sends updated info) the response should be the previous communication name plus a "-response" (e.g. client sends an `init` to the server, the server sends an `init-response` to the client with updated info).
 #### Model
 - `callIdentifier`
   - description
@@ -120,7 +123,6 @@ Note: quant is a string.
   "sample api call object": "contents"
 }
 ```
-Note: all calls should be json for the sake of consistency.
 
 #### Requests (client to server communication)
 - `init`
