@@ -68,3 +68,7 @@ typings/
 
 *.ai
 *.psd
+
+# apple
+.DS_Store
+

@@ -1,5 +1,11 @@
 :root {
-  --primary: #5ba6ff
+  --primary: #5af;
+  --blue: #5af;
+  --red: #f66;
+  --green: #6fa;
+  --orange: #fb6;
+  --yellow: #ff6;
+  --purple: #d6d;
 }
 
 body {
@@ -49,10 +55,14 @@ ul.list > li {
   border: solid black 1px;
   padding: 1em .5em;
   display: grid;
+}
+
+ul.list > li:not(.sListItem) {
   grid-template-columns: auto 80px;
   grid-template-rows: auto auto;
   grid-template-areas: "title buttons"
-                       "notes quant  ";
+                       "notes quant  "
+                       "tags  tags";
 }
 
 ul.list > li > h2 {
@@ -61,13 +71,13 @@ ul.list > li > h2 {
   grid-area: title;
 }
 
-ul.list > li > p.itemNotes {
+ul.list > li:not(.sListItem) > p.itemNotes {
   margin: 0;
   padding: 0;
   grid-area: notes;
 }
 
-ul.list > li > p.quant {
+ul.list > li:not(.sListItem) > p.quant {
   margin: 0;
   padding: 0;
   grid-area: quant;
@@ -76,14 +86,60 @@ ul.list > li > p.quant {
   padding-right: .5em;
 }
 
-.listControl {
+ul.list > li:not(.sListItem) > .listControl {
   text-align: right;
   grid-area: buttons;
 }
 
-.listControl > img {
+ul.list > li:not(.sListItem) > .listControl > img {
   height: 30px;
   margin: 5px;
+}
+
+ul.list > li.sListItem {
+  grid-template-columns: auto 40px;
+  grid-template-rows: auto;
+  grid-template-areas: "title control";
+}
+
+ul.list > li.sListItem.select {
+  grid-template-columns: auto 120px;
+}
+
+div.swatch {
+  width: 30px;
+}
+
+ul.list > li.sListItem.checkbox > h2 {
+  margin-top: .25em;
+}
+
+ul.list > li.sListItem > .listControl {
+  text-align: left;
+  grid-area: control;
+  height: 40px;
+}
+
+ul.list > li.sListItem > .listControl > img {
+  height: 30px;
+  margin: 5px;
+}
+
+div.tags {
+  grid-area: tags;
+  font-size: .8em;
+}
+
+div.tag {
+  display: inline-block;
+  background-color: var(--secondary);
+  border: 1px solid var(--secondary-fade);
+  border-radius: 3px;
+  max-width: 10em;
+  overflow: hidden;
+  height: 1.2em;
+  margin: .3em .6em .3em 0;
+  padding: .2em;
 }
 
 .bottomNav {
@@ -96,7 +152,7 @@ ul.list > li > p.quant {
   /* background-color: blue; */
   list-style: none;
   padding: 0;
-  width: 320px;
+  width: 240px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -104,7 +160,7 @@ ul.list > li > p.quant {
 .navitem {
   /* background-color: cyan; */
   text-align: center;
-  width: 80px;
+  width: 60px;
   display: inline-block;
   font-size: 16px; /* to fix gap issue */
   margin-top: .5em;
@@ -113,5 +169,5 @@ ul.list > li > p.quant {
 
 .navIcon {
   /* background-color: magenta; */
-  width: 40px;
+  width: 30px;
 }

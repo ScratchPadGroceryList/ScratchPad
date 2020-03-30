@@ -5,16 +5,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Scratch Pad</title>
+    <!-- INCLUDES -->
+    <!-- custom styles -->
     <link rel="stylesheet" href="master.css">
+    <!-- css modules -->
+    <link rel="stylesheet" href="checkbox.css">
+    <!-- socket.io -->
     <script src="socket.io.js" charset="utf-8"></script>
+    <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- localforage -->
     <script src="localforage.js"></script>
   </head>
 
   <body>
     <div class="header">
-      <h1>Scratch Pad</h1>
+      <h1 id="tapCounter">Scratch Pad</h1>
     </div>
     
     <div class="content">
@@ -24,7 +32,7 @@
     <div class="bottomNav">
       <ul class="navbar">
         <li class="navitem pList"><img class="navIcon pList" src="icon/pList.svg" alt="private list icon"><br>Private</li>
-        <li class="navitem gList"><img class="navIcon gList" src="icon/list.svg" alt="list icon"><br>List</li>
+        <li class="navitem gList"><img class="navIcon gList" src="icon/gList.svg" alt="list icon"><br>List</li>
         <li class="navitem cart"><img class="navIcon cart" src="icon/cart.svg" alt="cart icon"><br>Cart</li>
         <li class="navitem settings"><img class="navIcon settings" src="icon/settings.svg" alt="gear icon"><br>Settings</li>
       </ul>

@@ -1,0 +1,90 @@
+/* this checkbox is a little funky in chromes mobile emulation, but works on ios just fine. untested on android. */
+input[shapebox] {
+  position: absolute;
+  left: -9999px;
+}
+
+label[shapebox] {
+  content: "apple";
+}
+
+label[shapebox]:before, label[shapebox]:after {
+  display: block;
+  content: "";
+  height: 30px;
+  width: 4px;
+  border-radius: 2px;
+  background-color: black;
+  transition: 500ms ease all 0s;
+  position: relative;
+}
+
+label[shapebox]:before {
+  transform: rotate(-45deg);
+  top: 6px;
+  left: 18px;
+}
+
+label[shapebox]:after {
+  transform: rotate(45deg);
+  top: -24px;
+  left: 18px;
+}
+
+input[shapebox]:checked + label[shapebox]:before {
+  transform: rotate(-215deg);
+  height: 15px;
+  top: 19px;
+  left: 8px;
+}
+
+input[shapebox]:checked + label[shapebox]:after {
+  transform: rotate(225deg);
+  top: -9px;
+  left: 21px;
+}
+
+/* original code from [this codepen](https://codepen.io/onediv/pen/pjgNqJ?editors=1100)
+label[shapebox]:after {
+    content: '';
+    margin-top: -15px;
+    margin-left: -2px;
+    height: 30px;
+    width: 4px;
+    background: #000;
+    transform: rotate(45deg);
+    border-radius: 2px;
+    transition: 500ms ease all 0s;
+}
+label[shapebox]:before {
+    content: '';
+    margin-top: -15px;
+    margin-left: -2px;
+    height: 30px;
+    width: 4px;
+    background: #000;
+    transform: rotate(-45deg);
+    border-radius: 2px;
+    transition: 500ms ease all 0s;
+}
+
+input[shapebox]:checked + label[shapebox]:after {
+    content: '';
+    margin-top: -15px;
+    margin-left: 5px;
+    height: 30px;
+    width: 4px;
+    background: #000;
+    transform: rotate(225deg);
+    border-radius: 2px;
+}
+input[shapebox]:checked + label[shapebox]:before {
+    content: '';
+    margin-top: -7px;
+    margin-left: -10px;
+    height: 20px;
+    width: 4px;
+    background: #000;
+    transform: rotate(-215deg);
+    border-radius: 2px;
+} */

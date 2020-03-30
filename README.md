@@ -1,6 +1,8 @@
 # ScratchPad
 A Phonegap/Node.js app for more easily communicating grocery lists.
 
+Please note, if you are testing the web app in browser, you must simulate touch input somehow. To do this in chrome: inspect element >> toggle device tool bar (in the upper left of the devtools window).
+
 ---
 
 ## Terms
@@ -65,10 +67,15 @@ Stands for settings list.
         "quant": "10",
         "tags": ["Apples", "Grapes"]
       }
+    },
+    "userSettings": {
+      "sampleBoolSetting": false,
+      "sampleIntSetting": 100,
+      "sampleStringSetting": "string"
     }
   },
   
-  "settings": {
+  "localSettings": {
     "sampleBoolSetting": false,
     "sampleNumSetting": 100,
     "sampleStringSetting": "string"
@@ -98,7 +105,7 @@ Stands for settings list.
         "name": "Tostitos",
         "notes": null,
         "quant": "4",
-        "tags": ["/~Kevin~/", "Never Enough"]
+        "tags": ["*/~Kevin~/*", "Never Enough"]
       }
     }
   }
@@ -135,9 +142,11 @@ Note: quant is a string.
 {
   "username": "jSmith244",
   "authToken": "234kjg5h2g34h12k5jh2l3kj5h52lk3jh51ljh43g25kj3hg46",
-  "activeFamilyKey" : "276Hjs6urn"
+  "activeFamilyKey" : "276Hjs6urn",
+  "offlineActions": null
 }
 ```
+Note: `offlineActions` will just be null until offline actions are implemented later.
 
 - `addItem`
   - Sent when someone adds an item to a list
